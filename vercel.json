@@ -1,19 +1,21 @@
 {
   "version": 2,
   "rewrites": [
-    { 
-      "source": "/api/(.*)", 
-      "destination": "/api/$1" 
+    {
+      "source": "/api/admin/:path*",
+      "destination": "/api/admin.js?path=:path"
     },
-    { 
-      "source": "/(.*)", 
-      "destination": "/client/index.html" 
+    {
+      "source": "/api/verify/:path*",
+      "destination": "/api/verify.js?path=:path"
+    },
+    {
+      "source": "/api/report",
+      "destination": "/api/verify.js?path=report"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/client/index.html"
     }
-  ],
-  "functions": {
-    "api/**/*.js": {
-      "maxDuration": 10,
-      "memory": 512
-    }
-  }
+  ]
 }

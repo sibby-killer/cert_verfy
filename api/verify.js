@@ -1,23 +1,24 @@
-import { verifyQr } from './verify/qr.js';
-import { verifyNumber } from './verify/number.js';
-import { verifyFile } from './verify/file.js';
-import { submitReport } from './report.js';
-import { sendError } from '../lib/utils/responseHelper.js';
+import { verifyQr } from '../lib/api/verify/qr.js';
+import { verifyNumber } from '../lib/api/verify/number.js';
+import { verifyFile } from '../lib/api/verify/file.js';
+import { submitReport } from '../lib/api/public/report.js';
+import { error } from '../lib/utils/responseHelper.js';
 
 export default async function handler(req, res) {
   const { path } = req.query;
+  const cleanPath = Array.isArray(path) ? path[0] : path;
 
   try {
     if (req.method === 'POST') {
-      if (path === 'qr') return await verifyQr(req, res);
-      if (path === 'number') return await verifyNumber(req, res);
-      if (path === 'file') return await verifyFile(req, res);
-      if (path === 'report') return await submitReport(req, res);
+      if (cleanPath === 'qr') return await verifyQr(req, res);
+      if (cleanPath === 'number') return await verifyNumber(req, res);
+      if (cleanPath === 'file') return await verifyFile(req, res);
+      if (cleanPath === 'report') return await submitReport(req, res);
     }
     
-    return sendError(res, 'Endpoint not found', 404);
-  } catch (error) {
-    console.error('Public API Error:', error);
-    return sendError(res, 'Internal server error', 500);
+    return error(res, 'Endpoint not found: ' + cleanPath, 404);
+  } catch (err) {
+    console.error('Public API Error:', err);
+    return error(res, 'Internal server error', 500);
   }
 }

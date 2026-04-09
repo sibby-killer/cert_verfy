@@ -1,0 +1,23 @@
+{
+  "name": "Bungoma National Polytechnic Certificate Verification",
+  "short_name": "BNP Verify",
+  "description": "Official certificate verification portal for Bungoma National Polytechnic graduates and employers.",
+  "theme_color": "#1B3A6B",
+  "background_color": "#F8FAFC",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "rewrites": [
+    { 
+      "source": "/api/(.*)", 
+      "destination": "/api/$1" 
+    },
+    { 
+      "source": "/(.*)", 
+      "destination": "/client/index.html" 
+    }
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "maxDuration": 10,
+      "memory": 512
+    }
+  }
+}

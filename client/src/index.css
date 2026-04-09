@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #1B3A6B;
+  --secondary: #C9A84C;
+  --success: #16A34A;
+  --danger: #DC2626;
+  --warning: #D97706;
+  --background: #F8FAFC;
+  --text: #1E293B;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+/* Custom utility for BNP theme */
+.btn-primary {
+  @apply bg-[#1B3A6B] text-[#C9A84C] px-6 py-3 rounded-lg font-bold transition-all hover:opacity-90 active:scale-95 disabled:opacity-50;
+}
+
+.card {
+  @apply bg-white rounded-xl shadow-md border border-slate-100 overflow-hidden;
+}
+
+.badge-valid { @apply bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold; }
+.badge-invalid { @apply bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm font-semibold; }
+.badge-revoked { @apply bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm font-semibold; }

@@ -9,7 +9,7 @@
     "generate": "drizzle-kit generate:sqlite",
     "push": "drizzle-kit push:sqlite",
     "seed": "node lib/db/seed.js",
-    "build": "cd client && npm install && npm run build",
+    "build": "cd client && npm install --legacy-peer-deps && npm run build",
     "deploy": "vercel --prod"
   },
   "dependencies": {

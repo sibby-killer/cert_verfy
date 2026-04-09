@@ -10,7 +10,7 @@ export const config = {
   },
 };
 
-const handler = async (req, res) => {
+export const verifyFile = withRateLimit(10, 60000, async (req, res) => {
   if (req.method !== 'POST') return error(res, 'Method not allowed', 405);
 
   const form = formidable({});

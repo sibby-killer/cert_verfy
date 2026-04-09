@@ -3,7 +3,7 @@ import { certificateService } from '../../lib/services/certificate.service.js';
 import { success, error } from '../../lib/utils/responseHelper.js';
 import { sanitizeInput, validateSecurityNumber } from '../../lib/utils/validators.js';
 
-const handler = async (req, res) => {
+export const verifyNumber = withRateLimit(10, 60000, async (req, res) => {
   if (req.method !== 'POST') return error(res, 'Method not allowed', 405);
 
   try {
@@ -22,6 +22,4 @@ const handler = async (req, res) => {
   } catch (err) {
     return error(res, 'Failed to verify security number');
   }
-};
-
-export default withRateLimit(10, 60000, handler);
+});
